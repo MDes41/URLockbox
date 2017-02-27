@@ -41,9 +41,9 @@ function linkHTML(link) {
                 ${ link.read }
               </p>
               <p class="link_buttons">
-                <button class="mark-read">Mark as Read</button>
-                <button class='edit-link'>Edit</button>
-                <button class='delete-link'>Delete</button>
+                <button id="mark-read" class="mark-read">Mark as Read</button>
+                <button id='edit-link' class='edit-link'>Edit</button>
+                <button id='delete-link' class='delete-link'>Delete</button>
               </p>
             </div>`
 }
