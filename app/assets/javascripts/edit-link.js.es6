@@ -23,12 +23,11 @@ function editLink(e){
             title: $editLinkTitle.val()
           }
   })
-  .then(updateLinkStatus)
+  .then(editLinkStatus)
   .fail(displayFailure);
 }
 
-function updateLinkStatus(link) {
-  debugger
+function editLinkStatus(link) {
   $(`.link[data-id=${link.id}]`).find(".link-url").text(link.url);
   $(`.link[data-id=${link.id}]`).find(".link-title").text(link.title);
 }
@@ -44,7 +43,7 @@ function renderEdit(link){
   $(`.link[data-id=${linkId}]`).children('.link_buttons').append( editLinkHTML(link) )
   $(`.link[data-id=${linkId}]`).children('.link_buttons').children('.edit-link').hide()
   $('.edit-link').hide()
-  $("#close-edit-link").on('click', closeEdit(linkId));
+  $("#close-edit-link").on('click', closeEdit.bind(this,linkId));
   $("#edit-link-form").on('submit', editLink);
 }
 
@@ -63,17 +62,13 @@ function editLinkHTML(link) {
                     <label>Title:
                       <input id="edit-link-title">
                     </label>
-                    <input type="submit" value="Edit Link">
+                    <input type="submit" value="Submit Link">
                   </form>
                   <button id='close-edit-link'>Close Edit</button>
                 </div>
             `
 }
 
-function clearLink() {
-  $editLinkTitle.val("");
-  $editLinkUrl.val("");
-}
 
 function displayFailure(failureData){
   console.log("FAILED attempt to create new Link: " + failureData.responseText);
