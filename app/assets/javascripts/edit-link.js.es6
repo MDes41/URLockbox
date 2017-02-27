@@ -32,10 +32,6 @@ function editLinkStatus(link) {
   $(`.link[data-id=${link.id}]`).find(".link-title").text(link.title);
 }
 
-function displayFailure(failureData){
-  console.log("FAILED attempt to update Link: " + failureData.responseText);
-};
-
 
 function renderEdit(link){
   var $this = $(this);
@@ -70,7 +66,3 @@ function editLinkHTML(link) {
 }
 
 
-function displayFailure(failureData){
-  console.log("FAILED attempt to create new Link: " + failureData.responseText);
-  clearLink();
-}

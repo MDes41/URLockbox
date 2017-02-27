@@ -22,7 +22,3 @@ function removeLink(link){
   $(`#link-${link.id}`).remove();
 }
 
-
-function displayFailure(failureData){
-  console.log("FAILED attempt to delete new Link: " + failureData.responseText);
-}

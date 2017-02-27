@@ -27,13 +27,16 @@ function getLinkData() {
 }
 
 function renderLink(link){
-  $("#links-list").append( linkHTML(link) )
+  $("#links-list").append( linkHTML(link) );
+  $(".delete-link").on('click', deleteLink);
+  $(".edit-link").on('click', renderEdit);
+  $('.mark-read').on('click', markAsRead);
   clearLink();
 }
 
 function linkHTML(link) {
 
-    return `<div class='link' data-id='${link.id}' id="link-${link.id}">
+    return `<div class='link col-md-3' data-id='${link.id}' id="link-${link.id}">
               <p class='link-title'>${ link.title }</p>
               <p class='link-url'>${ link.url }</p>
 
@@ -54,6 +57,13 @@ function clearLink() {
 }
 
 function displayFailure(failureData){
-  console.log("FAILED attempt to create new Link: " + failureData.responseText);
+  var error = "FAILED attempt: " + failureData.responseText
+  console.log(error);
+  $('.flash-message').remove();
+  $('#flash').append(`<div class="flash-message" id="red">${error}</div>`).slideDown(function() {
+    setTimeout(function() {
+        $('#flash').slideUp();
+    }, 5000);
+});
   clearLink();
 }

@@ -8,7 +8,6 @@ function markAsRead(e){
 
   var $this = $(this);
   var linkId = $this.parents('.link').data('id');
-  
   $.ajax({
     url: '/api/v1/links/' + linkId,
     method: 'PATCH',
@@ -22,6 +21,3 @@ function updateLinkStatus(link) {
   $(`.link[data-id=${link.id}]`).find(".link_read").text(link.read);
 }
 
-function displayFailure(failureData){
-  console.log("FAILED attempt to update Link: " + failureData.responseText);
-};
