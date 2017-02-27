@@ -21,6 +21,15 @@ class Api::V1::LinksController < ApplicationController
     end
   end
 
+  def destroy
+    @link = Link.find params[:id]
+    if @link.delete
+      render json: @link, status: 202
+    else
+      render json: @link.errors.full_messages, status: 500
+    end
+  end
+
   private
 
   def link_params
