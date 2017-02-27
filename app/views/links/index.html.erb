@@ -1,5 +1,7 @@
 <% if current_user %>
 
+<%= link_to 'Signout', logout_path, class: 'signout-button' %>
+
   <form id="new-link">
     <label>URL:
       <input id="link-url">
