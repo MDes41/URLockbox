@@ -1,5 +1,3 @@
-var $newLinkTitle, $newLinkUrl;
-
 $(document).ready(function(){
   $(".delete-link").on('click', deleteLink);
 })

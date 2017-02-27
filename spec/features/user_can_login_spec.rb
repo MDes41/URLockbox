@@ -11,6 +11,7 @@ RSpec.feature 'User can login' do
       fill_in 'password', with: '123'
       click_on 'Login'
 
+
       expect(current_path).to eq(root_path)
       expect(page).to_not have_content('Login')
       expect(page).to have_content('Signout')
