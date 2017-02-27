@@ -18,6 +18,7 @@ gem 'better_errors', group: :development
 gem 'react-rails'
 gem 'sprockets-es6'
 gem 'bootstrap-sass'
+gem 'heroku'
 
 # gem 'unicorn'
 
