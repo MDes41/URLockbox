@@ -6,16 +6,18 @@ class Api::V1::LinksController < ApplicationController
     if @link.save
       render json: @link, status: 201
     else
+      flash.now['alert-danger'] = @link.errors.full_messages.join(', ')
       render json: @link.errors.full_messages, status: 500
     end
   end
 
   def update
     @link = Link.find params[:id]
-    @link.update_attributes link_params
+    @link.assign_attributes link_params
     just_read = @link.read_changed? && @link.read
     if @link.save
       Read.create(link: @link) if just_read
+      HotReads.new(@link)
       render json: @link, status: 201
     else
       render json: @link.errors.full_messages, status: 500

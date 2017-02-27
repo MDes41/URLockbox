@@ -1,5 +1,4 @@
 <% if current_user %>
-
 <%= link_to 'Signout', logout_path, class: 'signout-button' %>
 
   <form id="new-link">
@@ -27,9 +26,9 @@
         <button class='edit-link'>Edit</button>
         <button class='delete-link'>Delete</button>
       </p>
-      <div id="links-list"></div>
     </div>
   <% end %>
+<div id="links-list"></div>
 </div>
 
   <div class='row'>
