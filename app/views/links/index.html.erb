@@ -12,17 +12,37 @@
     <input type="submit" value="Add Link">
   </form>
 
-  <div id="links-list"></div>
 
-  <h2>Hot Reads!</h2>
-  <ol id="hot-reads">
-  <% @hot_links.each do |read| %>
-    <li class='hot-read'>
-      <a href="<%= read.url %>"><%= read.url %></a>
-    </li>
+<div class='row'>
+  <% current_user.links.each do |link| %>
+    <div class='link col-md-3' data-id='${link.id}' id="link-${link.id}">
+      <p class='link-title'><%= link.title %></p>
+      <p class='link-url'><%= link.url %></p>
+
+      <p class="link_read">
+         <%= link.read %>
+      </p>
+      <p class="link_buttons">
+        <button class="mark-read">Mark as Read</button>
+        <button class='edit-link'>Edit</button>
+        <button class='delete-link'>Delete</button>
+      </p>
+      <div id="links-list"></div>
+    </div>
   <% end %>
-  </ol>
-  <img src="https://m.popkey.co/4c7272/QL6mJ.gif">
+</div>
+
+  <div class='row'>
+    <h2>Hot Reads!</h2>
+    <ol id="hot-reads">
+    <% @hot_links.each do |read| %>
+      <li class='hot-read'>
+        <a href="<%= read.url %>"><%= read.url %></a>
+      </li>
+    <% end %>
+    </ol>
+    <img src="https://m.popkey.co/4c7272/QL6mJ.gif">
+  </div>
 
 <% else %>
   <h1><%= link_to 'Login', login_path%></h1><br/>
