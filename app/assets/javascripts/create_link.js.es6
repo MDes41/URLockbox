@@ -37,11 +37,11 @@ function renderLink(link){
 function linkHTML(link) {
 
     return `<div class='link col-md-3' data-id='${link.id}' id="link-${link.id}">
-              <p class='link-title'>${ link.title }</p>
-              <p class='link-url'>${ link.url }</p>
+              <p class='link-title'>Title: ${ link.title }</p>
+              <p class='link-url'>URL: ${ link.url }</p>
 
               <p class="link_read">
-                ${ link.read }
+                Read: ${ link.read }
               </p>
               <p class="link_buttons">
                 <button class="mark-read">Mark as Read</button>
