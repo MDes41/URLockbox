@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.feature 'User can login' do
   context 'with proper params' do
     scenario 'an existing user can login to account and see different navbar' do
-      user = create :user, email: 'md', password: '123'
+      user = create :user, email: 'md', password: '123', password_confirmation: '123'
       visit root_path
       click_on 'Login'
       fill_in 'email', with: 'md'
@@ -20,7 +20,7 @@ RSpec.feature 'User can login' do
 
   context 'without proper params' do
     scenario 'an existing user cannot login to account and see different navbar' do
-      user = create :user, email: 'md', password: '123'
+      user = create :user, email: 'md', password: '123', password_confirmation: '123'
       visit root_path
       click_on 'Login'
       fill_in 'email', with: 'md'

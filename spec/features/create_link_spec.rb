@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "can create links", :js => :true do
   scenario "Create a new link" do
-    user = create :user, email: 'md', password: '123'
+    user = create :user, email: 'md', password: '123', password_confirmation: '123'
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit "/"
     fill_in 'link-title', :with => "Turing"
@@ -17,7 +17,7 @@ RSpec.describe "can create links", :js => :true do
   end
 
   scenario 'gets an error when submits an incorrect link' do
-    user = create :user, email: 'md', password: '123'
+    user = create :user, email: 'md', password: '123', password_confirmation: '123'
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit root_path

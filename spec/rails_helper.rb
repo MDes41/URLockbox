@@ -20,6 +20,14 @@ Capybara.register_driver :poltergeist do |app|
     Capybara::Poltergeist::Driver.new(app, options)
 end
 
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    # Choose a test framework:
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
 Capybara.javascript_driver = :poltergeist
 
 # Add additional requires below this line. Rails is not loaded until this point!

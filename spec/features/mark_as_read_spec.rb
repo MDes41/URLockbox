@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "can mark links as read", :js => :true do
   scenario "Mark a link as read" do
-    user = create :user, email: 'md', password: '123'
+    user = create :user, email: 'md', password: '123', password_confirmation: '123'
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     user.links.create(url:"https://turing.io", title:"Turing")
     visit "/"
