@@ -17,7 +17,6 @@ class Api::V1::LinksController < ApplicationController
     just_read = @link.read_changed? && @link.read
     if @link.save
       HotReads.new(@link)
-      Read.create(link: @link) if just_read
       render json: @link, status: 201
     else
       render json: @link.errors.full_messages, status: 500
