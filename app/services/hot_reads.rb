@@ -9,8 +9,7 @@ class HotReads
     # https://hot-reads.herokuapp.com
 
     conn.post do |req|
-      req.params['url'] = link.url
+      req.params['link'] = link.to_json
     end
   end
-
 end

@@ -2,6 +2,7 @@ var $editLinkTitle, $editLinkUrl;
 
 $(document).ready(function(){
 
+  $(".edit-link").off('click');
   $(".edit-link").on('click', renderEdit);
   
 })
@@ -39,6 +40,8 @@ function renderEdit(link){
   $(`.link[data-id=${linkId}]`).children('.link_buttons').append( editLinkHTML(link) )
   $(`.link[data-id=${linkId}]`).children('.link_buttons').children('.edit-link').hide()
   $('.edit-link').hide()
+  $("#close-edit-link").on('click');
+  $("#edit-link-form").on('click');
   $("#close-edit-link").on('click', closeEdit.bind(this,linkId));
   $("#edit-link-form").on('submit', editLink);
 }

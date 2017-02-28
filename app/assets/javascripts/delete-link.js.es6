@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  $(".delete-link").off('click');
   $(".delete-link").on('click', deleteLink);
 })
 

@@ -10,7 +10,7 @@ class Link < ApplicationRecord
       .order('count("reads".id) DESC').limit(10)
   }
 
-  scope :sort, -> { order(created_at: :desc) }
+  scope :sort, -> { order(id: :desc) }
   
   include ActiveModel::Validations
 
