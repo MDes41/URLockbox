@@ -1,5 +1,9 @@
 $(document).ready(function(){
   $('#filter').on('keyup', filter.bind(this, this))
+  $("#only-unread-links").off('click');
+  $("#only-read-links").off('click');
+  $("#only-unread-links").on('click', unreadLinks);
+  $("#only-read-links").on('click', readLinks);
 })
 
 function filter() {
@@ -14,6 +18,34 @@ function filter() {
     }
   }
 }
+
+function unreadLinks() {
+  var $searchTerm  = 'FALSE';
+  var tableContents = $('#links-list').children();
+  for(var i = 0; i < tableContents.length; i++) {
+    var tableName = tableContents[i].children[2].innerHTML.toUpperCase();
+    if (tableName.indexOf($searchTerm) == -1) {
+      tableContents[i].style.display = 'none';
+    } else {
+      tableContents[i].style.display = '';
+    }
+  }
+}
+
+function readLinks() {
+  var $searchTerm  = 'TRUE';
+  var tableContents = $('#links-list').children();
+  for(var i = 0; i < tableContents.length; i++) {
+    var tableName = tableContents[i].children[2].innerHTML.toUpperCase();
+    if (tableName.indexOf($searchTerm) == -1) {
+      tableContents[i].style.display = 'none';
+    } else {
+      tableContents[i].style.display = '';
+    }
+  }
+}
+
+
 
 
 
