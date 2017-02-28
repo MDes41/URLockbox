@@ -4,6 +4,7 @@ $(document).ready(function(){
   $newLinkTitle = $("#link-title");
   $newLinkUrl  = $("#link-url");
 
+  $("#new-link").off('submit');
   $("#new-link").on('submit', createLink);
 })
 
@@ -28,6 +29,9 @@ function getLinkData() {
 
 function renderLink(link){
   $("#links-list").append( linkHTML(link) );
+  $(".delete-link").off('click');
+  $(".edit-link").off('click');
+  $(".mark-read").off('click');
   $(".delete-link").on('click', deleteLink);
   $(".edit-link").on('click', renderEdit);
   $('.mark-read').on('click', markAsRead);

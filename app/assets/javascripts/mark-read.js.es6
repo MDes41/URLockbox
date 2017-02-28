@@ -1,6 +1,9 @@
 
 $(document).ready(function(){
+ $('.mark-unread').off('click')
+ $('.mark-read').off('click')
  $('.mark-read').on('click', markAsRead)
+ $('.mark-unread').on('click', markAsUnread)
 })
 
 function markAsRead(e){
@@ -36,6 +39,7 @@ function markAsReadStatus(link) {
   $(`.link[data-id=${link.id}]`).find(".link_read").text('Read: ' + link.read);
   $(`.link[data-id=${link.id}]`).children('.link_buttons').children('button.mark-read').remove()
   $(`.link[data-id=${link.id}]`).children('.link_buttons').prepend( buttonUnread )
+  $('.mark-unread').off('click')
   $('.mark-unread').on('click', markAsUnread)
 }
 
@@ -44,6 +48,7 @@ function markAsUnreadStatus(link) {
   $(`.link[data-id=${link.id}]`).find(".link_read").text('Read: ' + link.read);
   $(`.link[data-id=${link.id}]`).children('.link_buttons').children('button.mark-unread').remove()
   $(`.link[data-id=${link.id}]`).children('.link_buttons').prepend( buttonRead )
+  $('.mark-read').off('click')
   $('.mark-read').on('click', markAsRead)
 }
 
