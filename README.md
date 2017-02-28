@@ -5,11 +5,22 @@ URLockbox is a small application at https://murmuring-thicket-81764.herokuapp.co
 #Getting Started
 
 ####Clone the repository:
-  ```https://github.com/MDes41/URLockbox```
+  
+  ```
+  https://github.com/MDes41/URLockbox
+  ```
+
 ####Bundle application
-  ```bundle install```
+  
+  ```
+  bundle install
+  ```
+
 ####Create and migrate database
-  ```rake db:create db:migrate```
+
+  ```
+  rake db:create db:migrate
+  ```
 
 #Deployment
 
