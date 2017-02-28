@@ -3,14 +3,21 @@
 
   <form id="new-link">
     <label>URL:
-      <input id="link-url">
+      <input id="link-url" name='link-url'>
     </label>
     <label>Title:
-      <input id="link-title">
+      <input id="link-title" name='link-title'>
     </label>
     <input type="submit" value="Add Link">
   </form>
 
+<div class='row filter'>
+  <h1>Filter</h1>
+
+  <input type='text' id='food-name-filter' name='food-name-filter' placeholder='By text'>
+  <button class='delete-link'>Only Unread Links</button>
+  <button class='delete-link'>ONly Read Link</button>
+</div>
 
 <div class='row'>
   <% current_user.links.each do |link| %>
@@ -30,6 +37,7 @@
   <% end %>
 <div id="links-list"></div>
 </div>
+
 
   <div class='row'>
     <h2>Hot Reads!</h2>

@@ -9,8 +9,18 @@ require 'capybara/poltergeist'
 
 require 'support/factory_girl'
 
-Capybara.javascript_driver = :poltergeist
+# Add additional requires below this line. Rails is not loaded until this point!
+Capybara.register_driver :poltergeist do |app|
+    options = {
+         :js_errors => false,
+         :debug => false,
+         :phantomjs_options => ['--load-images=no', '--disk-cache=false'],
+         :inspector => true,
+     }
+    Capybara::Poltergeist::Driver.new(app, options)
+end
 
+Capybara.javascript_driver = :poltergeist
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
