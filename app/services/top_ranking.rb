@@ -1,7 +1,7 @@
 class TopRanking
 
   def initialize
-    conn = Faraday.new(:url => 'https://nameless-coast-56698.herokuapp.com/reads')
+    @conn = Faraday.new(:url => 'https://nameless-coast-56698.herokuapp.com/')
   end
 
   def get_top_ten

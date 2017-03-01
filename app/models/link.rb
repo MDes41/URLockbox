@@ -27,6 +27,7 @@ class Link < ApplicationRecord
   end
 
   def mark_top_ten
+    top_ten = [{url: ''}]
     top_ten = TopRanking.new.get_top_ten
     top_ten.each do |read|
       if read[:url] == self.url
@@ -34,9 +35,11 @@ class Link < ApplicationRecord
         self.save
       end
     end
-    if top_ten[0][:url] == self.url
-      self.rank = 'Top'
-      self.save
+    if top_ten.first
+      if top_ten.first[:url] == self.url
+        self.rank = 'Top'
+        self.save
+      end
     end
   end
 end
