@@ -22,10 +22,8 @@
 <div class='row'>
 <div id="links-list">
   <% @links.each do |link| %>
-      <% if Link.count > 0 %>
-        <% link.clear_rank %>
-        <% link.mark_top_ten  %>
-      <% end %>
+    <% link.clear_rank %>
+    <% link.mark_top_ten  %>
 
     <% if link.read == true %>
 
