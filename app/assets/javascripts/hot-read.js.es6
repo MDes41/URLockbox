@@ -1,6 +1,6 @@
-// $(document).ready(function(){
-//   getHotReads();
-// })
+$(document).ready(function(){
+  rank();
+})
 
 // function getHotReads (){
 
@@ -29,5 +29,17 @@
 //     }
 //   }
 // }
+
+function rank() {
+  var tableContents = $('#links-list').children();
+  for(var i = 0; i < tableContents.length; i++) {
+    var tableName = tableContents[i].children[1].innerHTML.toUpperCase();
+    if (tableName.indexOf($searchTerm) == -1) {
+      tableContents[i].style.display = 'none';
+    } else {
+      tableContents[i].style.display = '';
+    }
+  }
+}
 
 
