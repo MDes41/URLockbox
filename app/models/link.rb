@@ -2,15 +2,7 @@ class Link < ApplicationRecord
   belongs_to :user
   validates :title, presence: true
 
-  scope :hot, -> {
-    select('links.url as url')
-      .joins('join reads on reads.link_id = links.id')
-      .where('reads.created_at > ?', Time.now - 1.day)
-      .group("links.url")
-      .order('count("reads".id) DESC').limit(10)
-  }
-
-  scope :sort, -> { order(id: :desc) }
+  scope :sort, -> { order(id: :asc) }
   
   include ActiveModel::Validations
 
@@ -26,6 +18,25 @@ class Link < ApplicationRecord
     end
     unless resp == true
       record.errors[attribute] << "is not a valid url"
+    end
+  end
+
+  def clear_rank
+    self.rank = ''
+    self.save
+  end
+
+  def mark_top_ten
+    top_ten = TopRanking.new.get_top_ten
+    top_ten.each do |read|
+      if read[:url] == self.url
+        self.rank = 'Hot'
+        self.save
+      end
+    end
+    if top_ten[0][:url] == self.url
+      self.rank = 'Top'
+      self.save
     end
   end
 end

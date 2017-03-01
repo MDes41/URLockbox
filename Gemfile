@@ -20,6 +20,7 @@ gem 'sprockets-es6'
 gem 'bootstrap-sass'
 gem 'heroku'
 gem 'faraday'
+gem 'faker'
 
 # gem 'unicorn'
 
