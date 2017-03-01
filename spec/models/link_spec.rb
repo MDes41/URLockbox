@@ -10,7 +10,4 @@ RSpec.describe Link, type: :model do
     expect(link.rank).to eq('')
   end
 
-  it 'marks the top read' do
-    
-  end
 end

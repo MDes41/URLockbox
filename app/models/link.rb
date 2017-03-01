@@ -26,7 +26,17 @@ class Link < ApplicationRecord
     self.save
   end
 
-  def marks_the_top_read
-    
+  def mark_top_ten
+    top_ten = TopRanking.new.get_top_ten
+    top_ten.each do |read|
+      if read[:url] == self.url
+        self.rank = 'Hot'
+        self.save
+      end
+    end
+    if top_ten[0][:url] == self.url
+      self.rank = 'Hottest'
+      self.save
+    end
   end
 end
