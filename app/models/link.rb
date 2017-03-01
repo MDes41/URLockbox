@@ -35,7 +35,7 @@ class Link < ApplicationRecord
       end
     end
     if top_ten[0][:url] == self.url
-      self.rank = 'Hottest'
+      self.rank = 'Top'
       self.save
     end
   end
